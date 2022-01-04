@@ -10,20 +10,20 @@ const rootReducer = (state=initialState, action) => {
         case GET_ALL_USERS:{
             return {
                 ...state,
-                users: action.payload.results
+                users: action.payload
             }
         }
         case FILTER_USERS:{
-            const users = state.users.filter(user=> user.name.first === action.payload)
+            const users = state.users.filter(user => user.nombre.toUpperCase().includes(action.payload.toUpperCase()))
             return{
                 ...state,
                 users
             }
         }
         case UPDATE_USER:{
-            const preUser = state.users[0].name.first
-            console.log(preUser)
-            const newUsers = state.users.map((user)=>  user.name.first === preUser ? {...user, name:action.payload} : user )
+            const preUser = state.users[0].nombre
+            
+            const newUsers = state.users.map((user)=>  user.nombre.includes(preUser) ? {...user, nombre:action.payload} : user )
             return {
                 ...state,
                 users: newUsers

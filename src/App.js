@@ -9,7 +9,7 @@ function App() {
 
   const dispatch = useDispatch();
   const users = useSelector(state => state.users)
-
+  
   useEffect(()=>{
     dispatch(getAllUsers())
   },[])
@@ -46,7 +46,7 @@ function App() {
     <button onClick={handleUpdate}>Update</button>
       {
       users.length > 0 ?
-      <h3>name: {users[0].name.first} - apellido: {users[0].name.last} </h3>  : "" 
+      <h3>nombre y apellido : {users[0].nombre}  </h3>  : "" 
       
       }  
       <table >
@@ -66,14 +66,14 @@ function App() {
         {
           users?.map( (user, i) => (
               <tr key={i}>
-                <td> {user.name.first} {user.name.last} </td>
-                <td> {user.location.street.name} {user.location.street.number}</td>
-                <td> {user.location.city}</td>
-                <td> {user.location.state}</td>
-                <td> {user.location.country}</td>
-                <td> {user.location.postcode}</td>
-                <td> {user.location.coordinates.latitude}</td>
-                <td> {user.location.coordinates.longitude}</td>
+                <td> {user.nombre} </td>
+                <td> {user.calle} </td>
+                <td> {user.ciudad}</td>
+                <td> {user.provincia}</td>
+                <td> {user.pais}</td>
+                <td> {user.postal}</td>
+                <td> {user.latitud}</td>
+                <td> {user.longitud}</td>
               </tr>
           ))
         }
